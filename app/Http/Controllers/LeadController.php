@@ -13,6 +13,12 @@ class LeadController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        if(!$user->can('lead management')) {
+            flash()->addWarning('You are not authorized to access this page');
+            return redirect()->route('dashboard');
+        }
+
         return view('lead.index');
     }
 
