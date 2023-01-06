@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('curriculum_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('curriculum_id');
             $table->foreignId('exam_id')->constrained()->onDelete('cascade');
             $table->foreignId('lead_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            $table->foreign('curriculum_id')->references('id')->on('curriculums')->onDelete('cascade');
         });
     }
 

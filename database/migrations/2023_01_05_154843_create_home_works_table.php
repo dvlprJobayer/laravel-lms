@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('link');
-            $table->foreignId('curriculum_id')->default(0)->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('curriculum_id')->default(0);
             $table->foreignId('exam_id')->default(0)->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            $table->foreign('curriculum_id')->references('id')->on('curriculums')->onDelete('cascade');
         });
     }
 
