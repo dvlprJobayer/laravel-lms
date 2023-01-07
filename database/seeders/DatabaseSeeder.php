@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name' => $name,
             'email' => $email,
-            'password' => bcrypt('password')
+            'password' => bcrypt(123456)
         ]);
 
         if($type == 'Super Admin') {

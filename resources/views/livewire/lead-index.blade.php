@@ -15,7 +15,7 @@
             <td class="border px-4 py-2 text-center">{{ date('F j Y', strtotime($lead->created_at)) }}</td>
             <td class="border px-4 py-2 text-center">
                 <div class="flex items-center justify-around">
-                    <a href="{{ route('leads.edit', $lead) }}">
+                    <a href="{{ route('leads.edit', $lead->id) }}">
                         @include('components.icons.edit')
                     </a>
                     <a href="{{ route('leads.show', $lead) }}">

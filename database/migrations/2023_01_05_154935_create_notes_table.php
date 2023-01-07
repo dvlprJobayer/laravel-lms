@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->text('description');
-            $table->unsignedBigInteger('curriculum_id');
-            $table->foreignId('exam_id')->constrained()->onDelete('cascade');
-            $table->foreignId('lead_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('curriculum_id')->nullable();
+            $table->foreignId('exam_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('lead_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
 
             $table->foreign('curriculum_id')->references('id')->on('curriculums')->onDelete('cascade');

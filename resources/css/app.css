@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.lms-label {
+    @apply block text-lg mb-2;
+}
+
+.lms-input {
+    @apply block border border-purple-500 rounded-md;
+}
+
+.lms-btn {
+    @apply bg-purple-500 text-white font-medium py-3 px-6 rounded-md mt-6;
+}

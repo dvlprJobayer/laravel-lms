@@ -11,6 +11,6 @@ class Lead extends Model
 
     public function notes()
     {
-        $this->hasMany(Note::class);
+        return $this->hasMany(Note::class);
     }
 }
