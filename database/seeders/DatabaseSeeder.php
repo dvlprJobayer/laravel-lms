@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Super Admin Permissions
-        $default_permissions = ['lead management', 'create admin'];
+        $default_permissions = ['lead management', 'create admin', 'user management'];
         foreach ($default_permissions as $permission) {
             Permission::create(['name' => $permission]);
         }

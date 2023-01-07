@@ -29,7 +29,7 @@
 
         @include('components.loading')
 
-        <button wire:loading.delay.long.remove class="lms-btn" type="submit">Update</button>
+        <button wire:loading.delay.long.remove class="lms-btn mt-5" type="submit">Update</button>
     </form>
 
     <div class="mt-6">
@@ -47,7 +47,7 @@
                 placeholder="Title">
             <textarea wire:model="note_description" class="lms-input w-1/2" name="" id="note-description" rows="5"
                 placeholder="Description"></textarea>
-            <button type="submit" class="lms-btn">Save</button>
+            <button type="submit" class="lms-btn mt-5">Save</button>
         </form>
     </div>
 </div>

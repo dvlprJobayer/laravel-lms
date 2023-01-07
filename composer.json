@@ -29,7 +29,7 @@
     },
     "autoload": {
         "files": [
-            "app/Helpers/permission_check.php"
+            "app/Helpers/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/",
