@@ -16,7 +16,7 @@ class LeadIndex extends Component
         return view('livewire.lead-index', compact('leads'));
     }
 
-    public function lead_delete($id)
+    public function leadDelete($id)
     {
         $lead = Lead::findOrFail($id);
         $lead->delete();

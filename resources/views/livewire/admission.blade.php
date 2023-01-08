@@ -26,9 +26,12 @@
         @if (!empty($selected_course))
         <p>Price ${{ number_format($selected_course->price, 2) }}</p>
 
+        <input wire:model="payment" type="number" max="{{ number_format($selected_course->price, 2) }}" step="0.01"
+            class="lms-input w-1/3 my-4" placeholder="payment">
+
         @include('components.loading')
 
-        <button wire:loading.delay.long.remove class="lms-btn mt-4" type="submit">Enroll</button>
+        <button wire:loading.delay.long.remove class="lms-btn" type="submit">Enroll</button>
         @endif
     </form>
 </div>

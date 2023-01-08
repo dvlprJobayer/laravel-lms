@@ -22,7 +22,7 @@
                         @include('components.icons.view')
                     </a>
 
-                    <form onsubmit="return confirm('Are you Sure?')" wire:submit.prevent="lead_delete({{ $lead->id }})">
+                    <form onsubmit="return confirm('Are you Sure?')" wire:submit.prevent="leadDelete({{ $lead->id }})">
                         <button type="submit">
                             @include('components.icons.delete')
                         </button>
