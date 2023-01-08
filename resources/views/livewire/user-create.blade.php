@@ -1,4 +1,4 @@
-<form wire:submit.prevent="add_user">
+<form wire:submit.prevent="addUser">
     <div class="flex gap-x-4">
         <div class="flex-1">
             <label class="lms-label" for="name">Name</label>

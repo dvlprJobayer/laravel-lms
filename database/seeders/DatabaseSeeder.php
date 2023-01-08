@@ -37,16 +37,18 @@ class DatabaseSeeder extends Seeder
         // Create Users
         $this->create_user_with_role('Super Admin', 'Super Admin', 'super-admin@lms.test');
         $this->create_user_with_role('Communication', 'Communication Team', 'communication@lms.test');
+        $this->create_user_with_role('Lead Manager', 'Lead Team', 'lead@lms.test');
         $teacher = $this->create_user_with_role('Teacher', 'Teacher', 'teacher@lms.test');
 
         // Create Leads
         Lead::factory(100)->create();
 
         // Create courses
-        $course = Course::create([
+        Course::create([
             'name' => 'Laravel',
             'description' => 'Laravel is a web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.',
             'image' => 'https://laravel.com/img/logomark.min.svg',
+            'price' => 380,
             'user_id' => $teacher->id
         ]);
 
@@ -67,7 +69,7 @@ class DatabaseSeeder extends Seeder
 
         if($type == 'Super Admin') {
             $role->givePermissionTo(Permission::all());
-        } elseif ($type == 'Communication') {
+        } elseif ($type == 'Lead Manager') {
             $role->givePermissionTo('lead management');
         }
 

@@ -11,5 +11,5 @@
 }
 
 .lms-btn {
-    @apply bg-purple-500 text-white font-medium py-2 px-4 rounded-md cursor-pointer;
+    @apply bg-purple-500 text-white font-medium py-[10px] px-4 rounded-md cursor-pointer;
 }

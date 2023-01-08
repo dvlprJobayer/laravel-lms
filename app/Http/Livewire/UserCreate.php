@@ -19,7 +19,7 @@ class UserCreate extends Component
         return view('livewire.user-create', compact('roles'));
     }
 
-    public function add_user () {
+    public function addUser () {
         $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',

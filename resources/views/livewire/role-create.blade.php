@@ -1,4 +1,4 @@
-<form wire:submit.prevent="add_role">
+<form wire:submit.prevent="addRole">
     <div class="w-1/2">
         <label class="lms-label" for="name">Role Name</label>
         <input wire:model="name" class="lms-input w-full" type="text" id="name">

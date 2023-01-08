@@ -16,7 +16,7 @@ class RoleCreate extends Component
         return view('livewire.role-create', compact('permissions'));
     }
 
-    public function add_role () {
+    public function addRole () {
         $this->validate([
             'name' => 'required|unique:roles,name',
             'selected_permissions' => 'required|array|min:1'
