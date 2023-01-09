@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ProfileController;
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('lead', LeadController::class);
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
+    Route::resource('course', CourseController::class);
 });
 
 require __DIR__.'/auth.php';

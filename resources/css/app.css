@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .lms-label {
-    @apply block text-lg mb-2;
+    @apply block uppercase text-sm font-bold mb-2 cursor-pointer;
 }
 
 .lms-input {

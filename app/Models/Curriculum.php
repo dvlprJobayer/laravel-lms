@@ -10,6 +10,12 @@ class Curriculum extends Model
     use HasFactory;
 
     protected $table = 'curriculums';
+    protected $fillable = [
+        'name',
+        'class_time',
+        'class_date',
+        'course_id'
+    ];
 
     public function home_works() {
         $this->hasMany(HomeWork::class);

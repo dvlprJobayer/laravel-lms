@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('curriculums', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->dateTime('class_date')->default(now());
+            $table->time('class_time')->default(now());
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

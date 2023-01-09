@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->float('price');
+            $table->date('end_date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

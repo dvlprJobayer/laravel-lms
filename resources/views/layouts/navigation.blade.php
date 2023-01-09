@@ -24,6 +24,10 @@
                         {{ __('Invoices') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('course.index')" :active="request()->routeIs('course.index')">
+                        {{ __('Courses') }}
+                    </x-nav-link>
+
                     @can('lead management')
                     <x-nav-link :href="route('lead.index')" :active="request()->routeIs('lead.index')">
                         {{ __('Leads') }}

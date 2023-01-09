@@ -6,8 +6,8 @@ use App\Models\Invoice as ModelsInvoice;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
-use Illuminate\Http\Request;
 use LaravelDaily\Invoices\Classes\Party;
+use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {

@@ -2,28 +2,34 @@
     <form wire:submit.prevent="updateForm">
         <div class="flex">
             <div class="flex-1">
-                <label class="lms-label" for="">Name</label>
-                <input wire:model="name" class="lms-input w-full" type="text" name="" id="">
-
-                @error('name')
-                <div class="text-red-500 text-sm my-2">{{ $message }}</div>
-                @enderror
+                @include('components.form-field', [
+                'label' => 'Name',
+                'type' => 'text',
+                'name' => 'name',
+                'placeholder' => 'Lead name',
+                'required' => 'required',
+                'class' => 'w-full'
+                ])
             </div>
             <div class="flex-1 mx-4">
-                <label class="lms-label" for="">Phone</label>
-                <input wire:model="phone" class="lms-input w-full" type="tel" name="" id="">
-
-                @error('phone')
-                <div class="text-red-500 text-sm my-2">{{ $message }}</div>
-                @enderror
+                @include('components.form-field', [
+                'label' => 'Phone',
+                'type' => 'tel',
+                'name' => 'phone',
+                'placeholder' => 'Enter phone',
+                'required' => 'required',
+                'class' => 'w-full'
+                ])
             </div>
             <div class="flex-1">
-                <label class="lms-label" for="">Email</label>
-                <input wire:model="email" class="lms-input w-full" type="email" name="" id="">
-
-                @error('email')
-                <div class="text-red-500 text-sm my-2">{{ $message }}</div>
-                @enderror
+                @include('components.form-field', [
+                'label' => 'Email',
+                'type' => 'email',
+                'name' => 'email',
+                'placeholder' => 'Enter email',
+                'required' => 'required',
+                'class' => 'w-full'
+                ])
             </div>
         </div>
 
