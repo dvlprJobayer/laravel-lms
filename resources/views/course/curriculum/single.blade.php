@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Course Curriculum') }}
+                {{ __('Class Details') }}
             </h2>
 
-            <a class="lms-btn ml-4" href="{{ route('course.index') }}">Back To Courses</a>
+            <a class="lms-btn ml-4" href="{{ url()->previous() }}">Back</a>
         </div>
     </x-slot>
 
@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <livewire:course-show :course_id="$course_id" />
+                    <livewire:curriculum-show :curriculum_id="$curriculum_id" />
                 </div>
             </div>
         </div>

@@ -18,10 +18,18 @@ class Curriculum extends Model
     ];
 
     public function home_works() {
-        $this->hasMany(HomeWork::class);
+        return $this->hasMany(HomeWork::class);
     }
 
     public function attendances() {
-        $this->hasMany(Attendance::class);
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function course() {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function notes() {
+        return $this->hasMany(Note::class);
     }
 }

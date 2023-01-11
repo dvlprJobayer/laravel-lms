@@ -9,7 +9,7 @@
     @foreach ($courses as $course)
     <tr>
         <td class="border px-4 py-2">{{ $course->name }}</td>
-        <td class="border px-4 py-2 text-center">{{ $course->price }}</td>
+        <td class="border px-4 py-2 text-center"><span class="font-bold">$</span> {{ $course->price }}</td>
         <td class="border px-4 py-2 text-center">{{ date('F j Y', strtotime($course->created_at)) }}</td>
         <td class="border px-4 py-2 text-center">{{ date('F j Y', strtotime($course->end_date)) }}</td>
         <td class="border px-4 py-2 text-center">
