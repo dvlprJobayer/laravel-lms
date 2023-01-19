@@ -32,4 +32,8 @@ class Curriculum extends Model
     public function notes() {
         return $this->hasMany(Note::class);
     }
+
+    public function present_students() {
+        return Attendance::where('curriculum_id', $this->id)->count();
+    }
 }

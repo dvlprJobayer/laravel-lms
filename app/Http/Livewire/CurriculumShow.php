@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Attendance;
 use Livewire\Component;
 
 class CurriculumShow extends Component
@@ -40,5 +41,15 @@ class CurriculumShow extends Component
         $note = \App\Models\Note::findOrFail($id);
         $note->delete();
         flash()->addSuccess('Note deleted successfully');
+    }
+
+    public function attendance($student_id)
+    {
+        Attendance::create([
+            'user_id' => $student_id,
+            'curriculum_id' => $this->curriculum_id,
+        ]);
+
+        flash()->addSuccess('Attendance marked successfully');
     }
 }

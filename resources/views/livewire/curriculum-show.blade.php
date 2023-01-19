@@ -7,7 +7,8 @@
     <h4 class="font-bold text-gray-700">{{ $curriculum->name }}</h4>
     <h6 class="my-1">{{ date('F j Y', strtotime($curriculum->class_date)) }}</h6>
     <h6>{{ date('h:i A', strtotime($curriculum->class_time)) }}</h6>
-    <h5 class="font-bold text-gray-700 my-2">Students</h5>
+    <h5 class="font-bold text-gray-700 my-2">Students | Present - {{ $curriculum->present_students() }} | Absent - {{
+        $curriculum->course->students->count() - $curriculum->present_students() }}</h5>
 
     <table class="w-full">
         <tr>
@@ -21,13 +22,13 @@
             <td class="border px-4 py-2">{{ $student->email }}</td>
             <td class="border px-4 py-2">
                 <div class="flex items-center justify-center gap-x-4">
-                    <a href="">
+                    @if ($student->is_present($curriculum->id))
+                    Presented
+                    @else
+                    <button class="lms-btn" wire:click="attendance({{ $student->id }})">
                         Present
-                    </a>
-
-                    <a href="">
-                        Absent
-                    </a>
+                    </button>
+                    @endif
                 </div>
             </td>
         </tr>
