@@ -18,6 +18,8 @@
                         @enderror
                         <input type="submit" class="lms-btn mt-5" value="Add New Quiz">
                     </form>
+
+                    <livewire:quiz-index />
                 </div>
             </div>
         </div>
