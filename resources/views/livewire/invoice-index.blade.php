@@ -16,21 +16,20 @@
             <td class="border px-4 py-2">{{ $invoice->user->name }}</td>
             <td class="border px-4 py-2">{{ date('F j Y', strtotime($invoice->due_date)) }}</td>
             <td class="border px-4 py-2">{{ date('F j Y', strtotime($invoice->created_at)) }}</td>
-            <td class="border px-4 py-2 text-center">{{ $invoice->calculation()['total'] }}</td>
-            <td class="border px-4 py-2 text-center">{{ $invoice->calculation()['paid'] }}</td>
-            <td class="border px-4 py-2 text-center">{{ $invoice->calculation()['due'] }}</td>
+            <td class="border px-4 py-2 text-center">${{ number_format($invoice->calculation()['total'], 2) }}</td>
+            <td class="border px-4 py-2 text-center">${{ number_format($invoice->calculation()['paid'], 2) }}</td>
+            <td class="border px-4 py-2 text-center">${{ number_format($invoice->calculation()['due'], 2) }}</td>
             <td class="border px-4 py-2 text-center">
                 <div class="flex items-center justify-around">
-                    <a href="">
+                    <a href="{{ route('invoice.edit', $invoice->id) }}">
                         @include('components.icons.edit')
                     </a>
-                    <a href="{{ route('invoice-show', $invoice->id) }}">
+                    <a href="{{ route('invoice.show', $invoice->id) }}">
                         @include('components.icons.view')
                     </a>
 
-                    <form onsubmit="return confirm('Are you Sure?')"
-                        wire:submit.prevent="invoiceDelete({{ $invoice->id }})">
-                        <button type="submit">
+                    <form wire:submit.prevent="invoiceDelete({{ $invoice->id }})">
+                        <button onclick="return confirm('Are you Sure want to delete?')">
                             @include('components.icons.delete')
                         </button>
                     </form>

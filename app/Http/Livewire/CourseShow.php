@@ -8,10 +8,12 @@ use Livewire\Component;
 
 class CourseShow extends Component
 {
-    public $course_id;
+    public $course_slug;
     public function render()
     {
-        $course = Course::findOrFail($this->course_id);
+        $course = Course::where('slug',$this->course_slug)->first();
+        if (!$course)
+            abort(404);
         return view('livewire.course-show', [
             'course' => $course,
             'curriculums' => $course->curriculums

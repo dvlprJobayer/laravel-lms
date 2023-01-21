@@ -16,9 +16,9 @@ class CourseController extends Controller
         return view('course.create');
     }
 
-    public function show($id) {
+    public function show($slug) {
         return view('course.single', [
-            'course_id' => $id
+            'course_slug' => $slug
         ]);
     }
 }

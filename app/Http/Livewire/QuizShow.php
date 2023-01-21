@@ -9,7 +9,7 @@ class QuizShow extends Component
 {
     public $quiz;
     public $answer;
-    public $correct_answers = [];
+    public $answered = [];
     public $count_correct_answer;
     public $count_wrong_answer;
     public $options = ['answer_a', 'answer_b', 'answer_c', 'answer_d'];
@@ -21,13 +21,13 @@ class QuizShow extends Component
     public function result($question_id) {
         $question = Question::findOrFail($question_id);
 
-        if($question->correct_answer === explode('-', $this->answer)[0]) {
+        if($question->correct_answer === explode('-', $this->answer[$question_id])[0]) {
             flash()->addSuccess('Correct Answer');
-            $this->correct_answers[$question_id] = true;
+            $this->answered[$question_id] = true;
             $this->count_correct_answer++;
         } else {
             flash()->addError('Wrong Answer');
-            $this->correct_answers[$question_id] = false;
+            $this->answered[$question_id] = false;
             $this->count_wrong_answer++;
         }
     }

@@ -20,7 +20,7 @@
                         {{ __('Admission') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('invoice-index')" :active="request()->routeIs('invoice-index')">
+                    <x-nav-link :href="route('invoice.index')" :active="request()->routeIs('invoice.index')">
                         {{ __('Invoices') }}
                     </x-nav-link>
 

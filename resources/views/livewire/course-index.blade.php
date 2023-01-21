@@ -18,7 +18,7 @@
                     @include('components.icons.edit')
                 </a>
 
-                <a href="{{ route('course.show', $course->id) }}">
+                <a href="{{ route('course.show', $course->slug) }}">
                     @include('components.icons.view')
                 </a>
 

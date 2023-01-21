@@ -42,6 +42,7 @@ class CourseCreate extends Component
 
         $course = Course::create([
             'name' => $this->name,
+            'slug' => str_replace(' ', '-', strtolower($this->name)),
             'description' => $this->description,
             'price' => $this->price,
             'end_date' => $this->end_date,
