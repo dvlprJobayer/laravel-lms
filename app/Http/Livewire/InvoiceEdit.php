@@ -6,6 +6,8 @@ use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Payment;
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Stripe\StripeClient;
 
 class InvoiceEdit extends Component
 {
@@ -42,11 +44,28 @@ class InvoiceEdit extends Component
         Payment::create([
             'invoice_id' => $this->invoice_id,
             'amount' => $this->price * $this->quantity,
+            'transaction_id' => Str::random(9)
         ]);
 
         flash()->addSuccess('Item added successfully');
 
         $this->reset('name', 'price', 'quantity');
         $this->formVisible();
+    }
+
+    public function refund($payment_id) {
+        $payment = Payment::findOrFail($payment_id);
+        if(strlen($payment->transaction_id) === 9) {
+            $payment->delete();
+        } else {
+            $stripe = new StripeClient(env('STRIPE_SECRET'));
+            $stripe->refunds->create([
+                'charge' => $payment->transaction_id,
+            ]);
+
+            $payment->delete();
+        }
+
+        flash()->addSuccess('Invoice refunded successfully');
     }
 }

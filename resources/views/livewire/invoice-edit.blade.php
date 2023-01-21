@@ -88,7 +88,9 @@
     <ul class="list-disc ml-5">
         @foreach ($invoice->payments as $payment)
         <li>{{ date('F j, Y - g:i:a', strtotime($payment->created_at)) }} | <span class="font-bold">${{
-                number_format($payment->amount, 2) }}</span>
+                number_format($payment->amount, 2) }}</span> | Transaction ID: {{ $payment->transaction_id }} --
+            <button wire:click="refund({{ $payment->id }})"
+                class="text-sm bg-purple-500 px-2 py-1 rounded-md text-white">Refund</button>
         </li>
         @endforeach
     </ul>

@@ -12,7 +12,12 @@ use Livewire\Component;
 
 class Admission extends Component
 {
+    public $name;
+    public $email;
+    public $password;
+    public $user_id;
     public $search;
+    public $not_found = false;
     public $leads = [];
     public $lead_id;
     public $course_id;
@@ -30,6 +35,11 @@ class Admission extends Component
         ->orWhere('email', 'like', '%' . $this->search . '%')
         ->orWhere('phone', 'like', '%' . $this->search . '%')
         ->get();
+        if($this->leads->count() == 0) {
+            $this->not_found = true;
+        } else {
+            $this->not_found = false;
+        }
     }
 
     public function courseSelect ()
@@ -66,6 +76,7 @@ class Admission extends Component
             Payment::create([
                 'amount' => $this->payment,
                 'invoice_id' => $invoice->id,
+                'transaction_id' => '123456789',
             ]);
         }
 
@@ -75,6 +86,60 @@ class Admission extends Component
         $this->course_id = null;
         $this->selected_course = null;
         $this->payment = null;
+
+        flash()->addSuccess('Admission successful!');
+    }
+
+    public function addStudent() {
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+        ]);
+
+        $this->user_id = $user->id;
+    }
+
+    public function studentAdmit () {
+        $invoice = Invoice::create([
+            'user_id' => $this->user_id,
+            'due_date' => now()->addDays(7),
+        ]);
+
+        InvoiceItem::create([
+            'name' => 'Course: '. $this->selected_course->name,
+            'price' => $this->selected_course->price,
+            'quantity' => 1,
+            'invoice_id' => $invoice->id,
+        ]);
+
+        $this->selected_course->students()->attach($this->user_id);
+
+        if(!empty($this->payment)) {
+            Payment::create([
+                'amount' => $this->payment,
+                'invoice_id' => $invoice->id,
+                'transaction_id' => '123456789',
+            ]);
+        }
+
+        $this->search = null;
+        $this->leads = [];
+        $this->lead_id = null;
+        $this->course_id = null;
+        $this->selected_course = null;
+        $this->payment = null;
+        $this->user_id = null;
+        $this->name = null;
+        $this->email = null;
+        $this->password = null;
+        $this->not_found = false;
 
         flash()->addSuccess('Admission successful!');
     }
