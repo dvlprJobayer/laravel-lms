@@ -55,9 +55,9 @@ class InvoiceController extends Controller
         return $invoice->stream();
     }
 
-    public function edit($id)
+    public function edit(ModelsInvoice $invoice)
     {
         
-        return view('invoice.edit', compact('id'));
+        return view('invoice.edit', compact('invoice'));
     }
 }

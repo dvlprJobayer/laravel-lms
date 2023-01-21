@@ -22,17 +22,18 @@
         </tr>
         @endforeach
         <tr>
-            <td class="border px-4 py-2 text-center font-semibold" colspan="3">SubTotal</td>
+            <td class="border px-4 py-2 text-right font-semibold" colspan="3">SubTotal</td>
             <td class="border px-4 py-2 text-right font-semibold">${{ number_format($invoice->calculation()['total'], 2)
                 }}</td>
         </tr>
         <tr>
-            <td class="border px-4 py-2 text-center font-semibold" colspan="3">Paid</td>
-            <td class="border px-4 py-2 text-right font-semibold">${{ number_format($invoice->calculation()['paid'], 2)
+            <td class="border px-4 py-2 text-right font-semibold" colspan="3">Paid</td>
+            <td class="border px-4 py-2 text-right font-semibold">- ${{ number_format($invoice->calculation()['paid'],
+                2)
                 }}</td>
         </tr>
         <tr>
-            <td class="border px-4 py-2 text-center font-semibold" colspan="3">Due</td>
+            <td class="border px-4 py-2 text-right font-semibold" colspan="3">Due</td>
             <td class="border px-4 py-2 text-right font-semibold">${{ number_format($invoice->calculation()['due'], 2)
                 }}</td>
         </tr>
@@ -82,4 +83,13 @@
     @else
     <button wire:click="formVisible" class="text-lg underline font-semibold mt-4">Add Item</button>
     @endif
+
+    <h3 class="text-lg font-bold mt-2 mb-1">Payments</h3>
+    <ul class="list-disc ml-5">
+        @foreach ($invoice->payments as $payment)
+        <li>{{ date('F j, Y - g:i:a', strtotime($payment->created_at)) }} | <span class="font-bold">${{
+                number_format($payment->amount, 2) }}</span>
+        </li>
+        @endforeach
+    </ul>
 </div>
